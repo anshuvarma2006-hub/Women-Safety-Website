@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account - Women Safety</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+    <div class="logo">
+        🛡️ Women<span>Safety</span>
+    </div>
+
+    <nav class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="index.html#services">Services</a>
+
+        <a href="safety-tips.html">Safety Tips</a>
+
+        <a href="about.html">About</a>
+
+        <a href="login.html">Login</a>
+
+        <a href="emergency.html" class="sos">
+            🚨 Emergency SOS
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- REGISTER SECTION -->
+
+<section class="register-section">
+
+    <div class="register-card">
+
+        <div class="register-header">
+
+            <div class="register-icon">
+                🛡️
+            </div>
+
+            <h1>Create Your Account</h1>
+
+            <p>
+                Join the Women Safety platform
+                and access useful safety resources.
+            </p>
+
+        </div>
+
+
+        <form id="registerForm">
+
+            <!-- NAME -->
+
+            <label for="fullName">
+                Full Name
+            </label>
+
+            <input
+                type="text"
+                id="fullName"
+                placeholder="Enter your full name"
+                required
+            >
+
+
+            <!-- EMAIL -->
+
+            <label for="registerEmail">
+                Email Address
+            </label>
+
+            <input
+                type="email"
+                id="registerEmail"
+                placeholder="Enter your email"
+                required
+            >
+
+
+            <!-- MOBILE -->
+
+            <label for="mobile">
+                Mobile Number
+            </label>
+
+            <input
+                type="tel"
+                id="mobile"
+                placeholder="Enter your mobile number"
+                maxlength="10"
+                required
+            >
+
+
+            <!-- PASSWORD -->
+
+            <label for="registerPassword">
+                Password
+            </label>
+
+            <input
+                type="password"
+                id="registerPassword"
+                placeholder="Create a password"
+                required
+            >
+
+
+            <!-- CONFIRM PASSWORD -->
+
+            <label for="confirmPassword">
+                Confirm Password
+            </label>
+
+            <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Confirm your password"
+                required
+            >
+
+
+            <!-- RESPONSIBLE USE -->
+
+            <label class="agreement">
+
+                <input
+                    type="checkbox"
+                    id="agreement"
+                    required
+                >
+
+                <span>
+                    I understand that this is an
+                    academic/demo system and agree
+                    to use it responsibly.
+                </span>
+
+            </label>
+
+
+            <!-- BUTTON -->
+
+            <button
+                type="submit"
+                class="register-button">
+
+                Create Account
+
+            </button>
+
+        </form>
+
+
+        <div id="registerMessage"></div>
+
+
+        <div class="login-link">
+
+            Already have an account?
+
+            <a href="login.html">
+                Login
+            </a>
+
+        </div>
+
+
+        <a
+            href="index.html"
+            class="back-home">
+
+            ← Back to Home
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="copyright">
+
+        © 2026 Women Safety Website –
+        Academic Project
+
+    </div>
+
+</footer>
+
+
+<script>
+
+document
+.getElementById("registerForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const password =
+        document.getElementById("registerPassword").value;
+
+    const confirmPassword =
+        document.getElementById("confirmPassword").value;
+
+    const message =
+        document.getElementById("registerMessage");
+
+
+    if (password !== confirmPassword) {
+
+        message.innerHTML =
+            "❌ Passwords do not match.";
+
+        message.style.color = "#dc2626";
+
+        return;
+    }
+
+
+    message.innerHTML =
+        "✅ Registration form submitted successfully.";
+
+    message.style.color = "#16a34a";
+
+});
+
+</script>
+
+</body>
+</html>

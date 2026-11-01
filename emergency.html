@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Emergency Support - Women Safety</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="dashboard-header">
+
+    <div class="logo">
+        🛡️ Women<span>Safety</span>
+    </div>
+
+    <a href="dashboard.html"
+       class="dashboard-home">
+        Dashboard
+    </a>
+
+</header>
+
+
+<!-- =========================
+     EMERGENCY SECTION
+========================= -->
+
+<main class="emergency-page">
+
+    <section class="emergency-hero">
+
+        <div class="emergency-badge">
+            🚨 Emergency Support
+        </div>
+
+        <h1>
+            Stay Calm. Get Support.
+        </h1>
+
+        <p>
+            Use the safety options below to access
+            emergency support and important resources.
+        </p>
+
+
+        <!-- SOS -->
+
+        <div class="sos-container">
+
+            <div class="sos-circle">
+
+                <span>🚨</span>
+
+                <strong>SOS</strong>
+
+                <small>
+                    Emergency Support
+                </small>
+
+            </div>
+
+            <p class="sos-note">
+                This button is a demonstration feature
+                for the academic project.
+            </p>
+
+        </div>
+
+
+        <!-- EMERGENCY CALL -->
+
+        <div class="emergency-actions">
+
+            <a href="tel:112" class="emergency-call-button">
+    📞 Call Emergency Services
+</a>
+
+
+            <button
+                onclick="getLocation()"
+                class="location-button">
+
+                📍 Get My Location
+
+            </button>
+
+        </div>
+
+
+        <!-- LOCATION RESULT -->
+
+        <div id="locationResult"
+             class="location-result">
+
+            Location information will appear here
+            after browser permission is granted.
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SAFETY OPTIONS
+    ========================= -->
+
+    <section class="emergency-options">
+
+        <h2>
+            Quick Safety Options
+        </h2>
+
+        <p class="section-description">
+            Access other useful safety features.
+        </p>
+
+
+        <div class="emergency-grid">
+
+
+            <!-- TRUSTED CONTACTS -->
+
+            <a href="contacts.html"
+               class="emergency-card">
+
+                <div class="emergency-icon">
+                    👥
+                </div>
+
+                <h3>
+                    Trusted Contacts
+                </h3>
+
+                <p>
+                    Manage people you trust
+                    for safety support.
+                </p>
+
+                <span>
+                    Manage Contacts →
+                </span>
+
+            </a>
+
+
+            <!-- LOCATION -->
+
+            <div class="emergency-card">
+
+                <div class="emergency-icon">
+                    📍
+                </div>
+
+                <h3>
+                    Location Support
+                </h3>
+
+                <p>
+                    Browser location access requires
+                    your permission.
+                </p>
+
+                <button
+                    onclick="getLocation()"
+                    class="small-button">
+
+                    Use Location
+
+                </button>
+
+            </div>
+
+
+            <!-- SAFETY TIPS -->
+
+            <a href="safety-tips.html"
+               class="emergency-card">
+
+                <div class="emergency-icon">
+                    🛡️
+                </div>
+
+                <h3>
+                    Safety Tips
+                </h3>
+
+                <p>
+                    Read useful personal and
+                    digital safety information.
+                </p>
+
+                <span>
+                    View Safety Tips →
+                </span>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SAFETY INSTRUCTIONS
+    ========================= -->
+
+    <section class="safety-instructions">
+
+        <h2>
+            Important Safety Instructions
+        </h2>
+
+        <div class="instruction-list">
+
+            <div>
+                <strong>01</strong>
+                Stay calm and move to a safe
+                location when possible.
+            </div>
+
+            <div>
+                <strong>02</strong>
+                Contact a trusted person or
+                appropriate emergency service.
+            </div>
+
+            <div>
+                <strong>03</strong>
+                Share your location only with
+                people you trust.
+            </div>
+
+            <div>
+                <strong>04</strong>
+                Follow instructions from
+                emergency professionals.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         DEMO NOTICE
+    ========================= -->
+
+    <section class="emergency-notice">
+
+        <strong>
+            ⚠️ Academic Project / Demo
+        </strong>
+
+        <p>
+            This website is developed as a B.Sc.
+            Computer Science academic project.
+            The SOS interface is a demonstration
+            and does not automatically dispatch
+            emergency services.
+        </p>
+
+    </section>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="copyright">
+
+        © 2026 Women Safety Website –
+        Academic Project
+
+    </div>
+
+</footer>
+
+
+<script>
+
+function getLocation() {
+
+    const result =
+        document.getElementById("locationResult");
+
+    if (!navigator.geolocation) {
+
+        result.innerHTML =
+            "❌ Location is not supported by this browser.";
+
+        return;
+    }
+
+    result.innerHTML =
+        "📍 Requesting location permission...";
+
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position) {
+
+            const latitude =
+                position.coords.latitude;
+
+            const longitude =
+                position.coords.longitude;
+
+            result.innerHTML =
+                "✅ Location permission granted.<br>" +
+                "Latitude: " + latitude.toFixed(5) +
+                "<br>" +
+                "Longitude: " + longitude.toFixed(5);
+
+        },
+
+        function() {
+
+            result.innerHTML =
+                "⚠️ Location permission was not granted. " +
+                "You can try again from your browser.";
+
+        }
+
+    );
+
+}
+
+</script>
+
+</body>
+</html>

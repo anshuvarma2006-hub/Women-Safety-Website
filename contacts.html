@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trusted Contacts - Women Safety</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="dashboard-header">
+
+    <div class="logo">
+        🛡️ Women<span>Safety</span>
+    </div>
+
+    <a href="dashboard.html" class="dashboard-home">
+        Dashboard
+    </a>
+
+</header>
+
+
+<main class="contacts-page">
+
+    <section class="contacts-hero">
+
+        <div class="emergency-badge">
+            👥 Trusted Contacts
+        </div>
+
+        <h1>People You Trust</h1>
+
+        <p>
+            Add trusted people who can be contacted
+            when you need safety support.
+        </p>
+
+    </section>
+
+
+    <!-- ADD CONTACT -->
+
+    <section class="contact-form-card">
+
+        <h2>Add Trusted Contact</h2>
+
+        <form id="contactForm">
+
+            <label>Contact Name</label>
+
+            <input
+                type="text"
+                id="contactName"
+                placeholder="Enter contact name"
+                required
+            >
+
+            <label>Phone Number</label>
+
+            <input
+                type="tel"
+                id="contactPhone"
+                placeholder="Enter phone number"
+                required
+            >
+
+            <label>Relationship</label>
+
+            <select id="contactRelation" required>
+
+                <option value="">
+                    Select relationship
+                </option>
+
+                <option>Parent</option>
+                <option>Sibling</option>
+                <option>Friend</option>
+                <option>Relative</option>
+                <option>Other</option>
+
+            </select>
+
+            <button type="submit" class="primary-button">
+                + Add Contact
+            </button>
+
+        </form>
+
+        <div id="contactMessage"></div>
+
+    </section>
+
+
+    <!-- SAVED CONTACTS -->
+
+    <section class="saved-contacts">
+
+        <h2>Saved Trusted Contacts</h2>
+
+        <div id="contactsList">
+
+            <p class="empty-contact">
+                No trusted contacts added yet.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- DEMO NOTICE -->
+
+    <section class="emergency-notice">
+
+        <strong>⚠️ Academic Project / Demo</strong>
+
+        <p>
+            Contacts are stored locally in this browser
+            for demonstration purposes. A production system
+            would require a secure backend and database.
+        </p>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="copyright">
+        © 2026 Women Safety Website – Academic Project
+    </div>
+
+</footer>
+
+
+<script>
+
+const contactForm =
+    document.getElementById("contactForm");
+
+const contactsList =
+    document.getElementById("contactsList");
+
+const contactMessage =
+    document.getElementById("contactMessage");
+
+
+// Get saved contacts
+
+function getContacts() {
+
+    return JSON.parse(
+        localStorage.getItem("trustedContacts")
+    ) || [];
+
+}
+
+
+// Display contacts
+
+function displayContacts() {
+
+    const contacts = getContacts();
+
+    contactsList.innerHTML = "";
+
+    if (contacts.length === 0) {
+
+        contactsList.innerHTML =
+            '<p class="empty-contact">' +
+            'No trusted contacts added yet.' +
+            '</p>';
+
+        return;
+    }
+
+
+    contacts.forEach(function(contact, index) {
+
+        const card =
+            document.createElement("div");
+
+        card.className = "contact-item";
+
+        card.innerHTML = `
+
+            <div class="contact-info">
+
+                <div class="contact-avatar">
+                    👤
+                </div>
+
+                <div>
+
+                    <h3>${contact.name}</h3>
+
+                    <p>📞 ${contact.phone}</p>
+
+                    <span>${contact.relationship}</span>
+
+                </div>
+
+            </div>
+
+            <button
+                class="delete-contact"
+                onclick="deleteContact(${index})">
+
+                Delete
+
+            </button>
+        `;
+
+        contactsList.appendChild(card);
+
+    });
+
+}
+
+
+// Add contact
+
+contactForm.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+        const name =
+            document.getElementById("contactName")
+            .value.trim();
+
+        const phone =
+            document.getElementById("contactPhone")
+            .value.trim();
+
+        const relationship =
+            document.getElementById("contactRelation")
+            .value;
+
+
+        const contacts = getContacts();
+
+        contacts.push({
+
+            name: name,
+
+            phone: phone,
+
+            relationship: relationship
+
+        });
+
+
+        localStorage.setItem(
+            "trustedContacts",
+            JSON.stringify(contacts)
+        );
+
+
+        contactMessage.innerHTML =
+            "✅ Trusted contact added successfully.";
+
+        contactMessage.className =
+            "success-message";
+
+
+        contactForm.reset();
+
+        displayContacts();
+
+    }
+);
+
+
+// Delete contact
+
+function deleteContact(index) {
+
+    const contacts = getContacts();
+
+    contacts.splice(index, 1);
+
+    localStorage.setItem(
+        "trustedContacts",
+        JSON.stringify(contacts)
+    );
+
+    displayContacts();
+
+}
+
+
+// Load contacts
+
+displayContacts();
+
+</script>
+
+</body>
+</html>

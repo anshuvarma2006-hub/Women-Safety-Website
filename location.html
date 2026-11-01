@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Location Support - Women Safety</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="dashboard-header">
+
+    <div class="logo">
+        🛡️ Women<span>Safety</span>
+    </div>
+
+    <a href="dashboard.html" class="dashboard-home">
+        Dashboard
+    </a>
+
+</header>
+
+
+<main class="location-page">
+
+    <!-- HERO -->
+
+    <section class="location-hero">
+
+        <div class="location-icon">
+            📍
+        </div>
+
+        <div class="emergency-badge">
+            Location Support
+        </div>
+
+        <h1>
+            Use Your Location Safely
+        </h1>
+
+        <p>
+            Allow your browser to access your current
+            location when you need location-based support.
+        </p>
+
+    </section>
+
+
+    <!-- LOCATION CARD -->
+
+    <section class="location-card">
+
+        <div class="location-card-icon">
+            📍
+        </div>
+
+        <h2>
+            Location Permission
+        </h2>
+
+        <p>
+            Your browser will ask for permission before
+            sharing your location with this website.
+        </p>
+
+        <button
+            class="location-main-button"
+            onclick="getLocation()">
+
+            📍 Get My Location
+
+        </button>
+
+
+        <div id="locationStatus"
+             class="location-status">
+
+            Location has not been requested yet.
+
+        </div>
+
+    </section>
+
+
+    <!-- LOCATION DETAILS -->
+
+    <section
+        id="locationDetails"
+        class="location-details"
+        style="display:none;">
+
+        <h2>
+            Your Location Details
+        </h2>
+
+        <div class="coordinate-grid">
+
+            <div class="coordinate-box">
+
+                <span>Latitude</span>
+
+                <strong id="latitude">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="coordinate-box">
+
+                <span>Longitude</span>
+
+                <strong id="longitude">
+                    --
+                </strong>
+
+            </div>
+
+        </div>
+
+        <p class="location-time">
+            Location obtained through your browser's
+            geolocation permission.
+        </p>
+
+    </section>
+
+
+    <!-- SAFETY INFORMATION -->
+
+    <section class="location-info-section">
+
+        <h2>
+            Location Safety Information
+        </h2>
+
+        <div class="location-info-grid">
+
+            <div class="info-box">
+
+                <div>🔐</div>
+
+                <h3>
+                    Your Permission
+                </h3>
+
+                <p>
+                    Location access requires permission
+                    from your browser or device.
+                </p>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div>📱</div>
+
+                <h3>
+                    Device Support
+                </h3>
+
+                <p>
+                    Location services should be enabled
+                    on your device for accurate results.
+                </p>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div>🛡️</div>
+
+                <h3>
+                    Privacy
+                </h3>
+
+                <p>
+                    This academic demo only displays
+                    the location returned by your browser.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- NOTICE -->
+
+    <section class="emergency-notice">
+
+        <strong>
+            ⚠️ Academic Project / Demo
+        </strong>
+
+        <p>
+            This location feature is provided for
+            demonstration purposes. A production system
+            would require secure data handling,
+            user consent and a properly protected backend.
+        </p>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="copyright">
+        © 2026 Women Safety Website – Academic Project
+    </div>
+
+</footer>
+
+
+<script>
+
+function getLocation() {
+
+    const status =
+        document.getElementById("locationStatus");
+
+    const details =
+        document.getElementById("locationDetails");
+
+    const latitude =
+        document.getElementById("latitude");
+
+    const longitude =
+        document.getElementById("longitude");
+
+
+    if (!navigator.geolocation) {
+
+        status.innerHTML =
+            "❌ Geolocation is not supported by this browser.";
+
+        status.className =
+            "location-status error-status";
+
+        return;
+    }
+
+
+    status.innerHTML =
+        "📍 Requesting location permission...";
+
+    status.className =
+        "location-status";
+
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position) {
+
+            const lat =
+                position.coords.latitude;
+
+            const lon =
+                position.coords.longitude;
+
+
+            latitude.textContent =
+                lat.toFixed(6);
+
+            longitude.textContent =
+                lon.toFixed(6);
+
+
+            details.style.display =
+                "block";
+
+
+            status.innerHTML =
+                "✅ Location permission granted successfully.";
+
+            status.className =
+                "location-status success-status";
+
+        },
+
+
+        function(error) {
+
+            let message =
+                "⚠️ Unable to access your location.";
+
+            if (error.code === 1) {
+
+                message =
+                    "⚠️ Location permission was denied. " +
+                    "Please allow location access in your browser.";
+
+            }
+
+            status.innerHTML = message;
+
+            status.className =
+                "location-status error-status";
+
+        }
+
+    );
+
+}
+
+</script>
+
+</body>
+</html>

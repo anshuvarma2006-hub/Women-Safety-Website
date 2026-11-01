@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Report Incident - Women Safety</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="dashboard-header">
+
+    <div class="logo">
+        🛡️ Women<span>Safety</span>
+    </div>
+
+    <a href="dashboard.html" class="dashboard-home">
+        Dashboard
+    </a>
+
+</header>
+
+
+<main class="complaint-page">
+
+    <!-- HERO -->
+
+    <section class="complaint-hero">
+
+        <div class="complaint-icon">
+            📝
+        </div>
+
+        <div class="emergency-badge">
+            Incident Reporting
+        </div>
+
+        <h1>
+            Report an Incident
+        </h1>
+
+        <p>
+            Use this form to record incident information
+            for this academic project demonstration.
+        </p>
+
+    </section>
+
+
+    <!-- FORM -->
+
+    <section class="complaint-card">
+
+        <form id="complaintForm">
+
+            <div class="form-group">
+
+                <label for="incidentType">
+                    Incident Type
+                </label>
+
+                <select id="incidentType" required>
+
+                    <option value="">
+                        Select Incident Type
+                    </option>
+
+                    <option>
+                        Harassment
+                    </option>
+
+                    <option>
+                        Stalking
+                    </option>
+
+                    <option>
+                        Unsafe Location
+                    </option>
+
+                    <option>
+                        Online Safety Issue
+                    </option>
+
+                    <option>
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label for="incidentDate">
+                        Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="incidentDate"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="incidentTime">
+                        Time
+                    </label>
+
+                    <input
+                        type="time"
+                        id="incidentTime"
+                        required>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="incidentLocation">
+                    Incident Location
+                </label>
+
+                <input
+                    type="text"
+                    id="incidentLocation"
+                    placeholder="Enter location"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="incidentDescription">
+                    Incident Description
+                </label>
+
+                <textarea
+                    id="incidentDescription"
+                    rows="6"
+                    placeholder="Enter a brief description..."
+                    required></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="contactInfo">
+                    Contact Information
+                    <span class="optional">
+                        (Optional)
+                    </span>
+                </label>
+
+                <input
+                    type="text"
+                    id="contactInfo"
+                    placeholder="Email or phone number">
+
+            </div>
+
+
+            <div class="report-checkbox">
+
+                <input
+                    type="checkbox"
+                    id="reportConfirm"
+                    required>
+
+                <label for="reportConfirm">
+
+                    I confirm that the information entered
+                    is provided for this project demonstration.
+
+                </label>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="report-submit-button">
+
+                📝 Submit Report
+
+            </button>
+
+        </form>
+
+
+        <div
+            id="reportMessage"
+            class="report-message">
+
+        </div>
+
+    </section>
+
+
+    <!-- INFORMATION -->
+
+    <section class="report-info-section">
+
+        <h2>
+            Important Information
+        </h2>
+
+        <div class="report-info-grid">
+
+            <div class="report-info-box">
+
+                <div>📋</div>
+
+                <h3>
+                    Complete Information
+                </h3>
+
+                <p>
+                    Enter clear and accurate information
+                    when demonstrating the form.
+                </p>
+
+            </div>
+
+
+            <div class="report-info-box">
+
+                <div>🔐</div>
+
+                <h3>
+                    Privacy
+                </h3>
+
+                <p>
+                    Do not enter sensitive personal
+                    information while testing this demo.
+                </p>
+
+            </div>
+
+
+            <div class="report-info-box">
+
+                <div>🛡️</div>
+
+                <h3>
+                    Academic Demo
+                </h3>
+
+                <p>
+                    This form demonstrates the frontend
+                    incident-reporting functionality.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- NOTICE -->
+
+    <section class="emergency-notice">
+
+        <strong>
+            ⚠️ Academic Project / Demo
+        </strong>
+
+        <p>
+            This form does not send a report to police,
+            authorities or any external organization.
+            A production system would require a secure
+            backend, database, authentication and
+            authorized reporting process.
+        </p>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="copyright">
+        © 2026 Women Safety Website – Academic Project
+    </div>
+
+</footer>
+
+
+<script>
+
+document
+    .getElementById("complaintForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const message =
+            document.getElementById("reportMessage");
+
+        message.innerHTML =
+            "✅ Incident report submitted successfully for demonstration.";
+
+        message.className =
+            "report-message report-success";
+
+        this.reset();
+
+    });
+
+</script>
+
+</body>
+</html>
